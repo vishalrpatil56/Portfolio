@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Patil Portfolio</title>
+    <style>
+        /* General Reset */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2f;
+            color: #c9d1d9;
+            overflow-x: hidden;
+        }
+        a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #282c34;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 100px 20px 50px;
+            background: linear-gradient(to bottom, #282c34, #1e1e2f);
+        }
+        header img {
+            width: 150px;
+            border-radius: 50%;
+            border: 3px solid #61dafb;
+            transition: transform 0.3s;
+        }
+        header img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        header h1 {
+            color: #61dafb;
+            font-size: 2.5em;
+            margin: 15px 0 10px;
+        }
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Section */
+        section {
+            padding: 50px 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: #282c34;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        section:hover {
+            transform: scale(1.02);
+            background-color: #1f1f2e;
+        }
+        h2 {
+            color: #f39c12;
+            font-size: 1.8em;
+        }
+
+        /* Terminal Effect */
+        .terminal {
+            background: #1e1e2f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #61dafb;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #282c34;
+            color: #c9d1d9;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#career">Career Objective</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Technical Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <img src="me2.jpg" alt="Vishal Patil">
+        <h1>Vishal Patil</h1>
+        <p>📍 Chikodi, Karnataka | 📞 +91 8296838241 | 📧 vishalrpatil.56@gmail.com</p>
+    </header>
+
+    <section id="career">
+        <h2>Career Objective</h2>
+        <div class="terminal">
+            Aspiring to leverage my technical expertise in a forward-thinking organization within the technology industry, contributing to innovative solutions while advancing my professional growth.
+        </div>
+    </section>
+
+    <section id="links">
+        <h2>Links</h2>
+        <ul>
+            <li>🔗 <a href="https://www.linkedin.com/in/vishal-patil-a2454a342" target="_blank">LinkedIn</a></li>
+            <li>🔗 <a href="https://github.com/vishalrpatil56" target="_blank">GitHub</a></li>
+            <li>🔗 <a href="https://leetcode.com/vishal_56" target="_blank">LeetCode</a></li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <ul>
+            <li>🎓 <strong>MCA</strong> - KLS Gogte Institute of Technology, Belagavi (2026, Pursuing)</li>
+            <li>🎓 <strong>B.Sc in Computer Science</strong> - KLE Society's Basavaprabhu Kore Arts, Science, and Commerce College, Chikodi (2024, 8.01 CGPA)</li>
+            <li>🎓 <strong>PUC (Science)</strong> - Basavajyothi PU College, Yaxamba (2021, 75%)</li>
+            <li>🎓 <strong>SSLC</strong> - CTE Society's English Medium School, Chikodi (2019, 79.68%)</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <ul>
+            <li>💻 C</li>
+            <li>💻 Java</li>
+            <li>💻 Python</li>
+            <li>🌐 HTML, CSS, JavaScript</li>
+            <li>🗄️ DBMS</li>
+            <li>🔗 Computer Networking</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Key Projects</h2>
+        <ul>
+            <li>
+                <strong>Amazon Clone Website</strong> - 
+                <a href="https://github.com/vishalrpatil56/Amazon-Clone" target="_blank">View Project</a>
+                <ul>
+                    <li>🔗 Designed and developed a shopping website clone of Amazon.com.</li>
+                    <li>🎨 Utilized HTML, CSS, and JavaScript with a focus on responsive design and user-friendly interface.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Vishal Patil</p>
+        <p><a href="CV.pdf" target="_blank">Download My Resume</a></p>
+    </footer>
+</body>
+</html>
