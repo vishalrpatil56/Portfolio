@@ -31,7 +31,7 @@
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #f39c12;
+            color: #FCAF45;
             text-decoration: underline;
         }
 
@@ -41,7 +41,7 @@
             top: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             padding: 15px 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             z-index: 1000;
@@ -78,54 +78,41 @@
             width: 100%;
         }
         
-        /* Header */
+        /* Header and Hero Image Section */
         header {
             text-align: center;
-            padding: 150px 20px 80px;
-            background: transparent;
+            background: #000; /* Solid background for the image section */
             position: relative;
             overflow: hidden;
+            padding-bottom: 20px; /* Space between the image and text */
         }
-        .profile-img-container {
-            position: relative;
-            display: inline-block;
-        }
-        header img {
-            width: 200px; /* Slightly larger */
-            height: 200px; /* Slightly larger */
-            border-radius: 50%;
-            border: 5px solid #FCAF45; /* Slightly thicker border */
-            box-shadow: 0 0 30px rgba(252, 176, 69, 0.7), 0 0 60px rgba(252, 176, 69, 0.3); /* Enhanced glow effect */
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
-            filter: brightness(1.1) contrast(1.1) saturate(1.2); /* Cinematic color adjustments */
-            object-fit: cover; /* Ensures image fills the circle properly */
+        
+        .hero-image-container {
+            width: 100%;
+            max-height: 600px; /* Max height to prevent it from being too tall */
+            overflow: hidden;
             position: relative;
             z-index: 1;
         }
-        header img:hover {
-            transform: scale(1.08) rotate(2deg); /* Subtle hover transform */
-            box-shadow: 0 0 40px rgba(252, 176, 69, 0.9), 0 0 80px rgba(252, 176, 69, 0.5); /* More intense glow on hover */
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the container without distortion */
+            filter: brightness(0.8) contrast(1.1) saturate(1.2); /* Cinematic color adjustments */
+            transform: scale(1.05); /* Slightly zoomed in for cinematic feel */
+            transition: transform 0.8s ease-in-out, filter 0.8s ease-in-out;
         }
 
-        /* Optional: Add a subtle background glow behind the image for extra cinematic pop */
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 220px; /* Slightly larger than image */
-            height: 220px; /* Slightly larger than image */
-            border-radius: 50%;
-            background: radial-gradient(circle, #FCAF45 0%, transparent 70%);
-            opacity: 0.5;
-            filter: blur(20px);
-            z-index: 0;
-            transition: opacity 0.5s ease;
+        .hero-image:hover {
+            transform: scale(1.0); /* Zoom out on hover */
+            filter: brightness(1) contrast(1) saturate(1); /* Return to normal colors on hover */
         }
 
-        .profile-img-container:hover::before {
-            opacity: 0.7;
+        .header-content {
+            position: relative;
+            padding: 20px;
+            z-index: 2;
         }
 
         h1 {
@@ -134,7 +121,7 @@
             margin: 20px 0 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        header p {
+        p {
             font-size: 1.2em;
             color: #c9d1d9;
         }
@@ -255,10 +242,10 @@
             nav ul li {
                 margin: 5px 0;
             }
-            header h1 {
+            h1 {
                 font-size: 2.5em;
             }
-            header p {
+            p {
                 font-size: 1em;
             }
             section {
@@ -267,14 +254,6 @@
             }
             h2 {
                 font-size: 1.8em;
-            }
-            header img {
-                width: 150px;
-                height: 150px;
-            }
-            .profile-img-container::before {
-                width: 170px;
-                height: 170px;
             }
         }
     </style>
@@ -293,12 +272,14 @@
     </nav>
 
     <header>
-        <div class="profile-img-container">
-            <img src="me2.jpg" alt="Vishal Patil">
+        <div class="hero-image-container">
+            <img src="me2.jpg" alt="Vishal Patil" class="hero-image">
         </div>
-        <h1>Vishal Patil</h1>
-        <p>A passionate and driven software developer</p>
-        <p id="contact">📍 Chikodi, Karnataka | 📞 +91 8296838241 | 📧 vishalrpatil.56@gmail.com</p>
+        <div class="header-content">
+            <h1>Vishal Patil</h1>
+            <p>A passionate and driven software developer</p>
+            <p id="contact">📍 Chikodi, Karnataka | 📞 +91 8296838241 | 📧 vishalrpatil.56@gmail.com</p>
+        </div>
     </header>
 
     <section id="career">
