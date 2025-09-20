@@ -10,19 +10,29 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #405DE6, #5B51D8, #833AB4, #E1306C, #FD1D1D, #F56040, #FCAF45);
-            background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+
+            /* NEW: Full-screen background image */
+            background-image: url('me2.jpg');
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat */
+            background-attachment: fixed; /* Keep image fixed when scrolling */
         }
 
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Add an overlay to make content more readable over the background image */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: -1;
         }
 
         a {
@@ -31,7 +41,7 @@
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #f39c12;
+            color: #FCAF45; /* Changed hover color for better contrast */
             text-decoration: underline;
         }
 
@@ -40,10 +50,10 @@
             position: sticky;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7); /* More opaque for readability */
+            backdrop-filter: blur(8px); /* Slightly less blur to save performance, but still sleek */
             padding: 15px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Stronger shadow */
             z-index: 1000;
         }
         nav ul {
@@ -81,62 +91,23 @@
         /* Header */
         header {
             text-align: center;
-            padding: 150px 20px 80px;
-            background: transparent;
+            padding: 80px 20px 50px; /* Reduced padding as image is gone */
+            background: transparent; /* No background needed as body handles it */
             position: relative;
             overflow: hidden;
         }
-        .profile-img-container {
-            position: relative;
-            display: inline-block;
-        }
-        header img {
-            width: 200px; /* Slightly larger */
-            height: 200px; /* Slightly larger */
-            border-radius: 50%;
-            border: 5px solid #FCAF45; /* Slightly thicker border */
-            box-shadow: 0 0 30px rgba(252, 176, 69, 0.7), 0 0 60px rgba(252, 176, 69, 0.3); /* Enhanced glow effect */
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
-            filter: brightness(1.1) contrast(1.1) saturate(1.2); /* Cinematic color adjustments */
-            object-fit: cover; /* Ensures image fills the circle properly */
-            position: relative;
-            z-index: 1;
-        }
-        header img:hover {
-            transform: scale(1.08) rotate(2deg); /* Subtle hover transform */
-            box-shadow: 0 0 40px rgba(252, 176, 69, 0.9), 0 0 80px rgba(252, 176, 69, 0.5); /* More intense glow on hover */
-        }
+        /* REMOVED .profile-img-container and header img styling */
 
-        /* Optional: Add a subtle background glow behind the image for extra cinematic pop */
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 220px; /* Slightly larger than image */
-            height: 220px; /* Slightly larger than image */
-            border-radius: 50%;
-            background: radial-gradient(circle, #FCAF45 0%, transparent 70%);
-            opacity: 0.5;
-            filter: blur(20px);
-            z-index: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .profile-img-container:hover::before {
-            opacity: 0.7;
-        }
-
-        h1 {
+        header h1 {
             color: #ffffff;
-            font-size: 3.5em;
+            font-size: 4em; /* Slightly larger for prominence */
             margin: 20px 0 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger text shadow for readability */
         }
         header p {
-            font-size: 1.2em;
-            color: #c9d1d9;
+            font-size: 1.3em; /* Slightly larger */
+            color: #e0e0e0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
         }
 
         /* Section */
@@ -144,24 +115,25 @@
             padding: 60px 20px;
             margin: 30px auto;
             max-width: 900px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.8); /* More opaque for readability over background image */
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Stronger shadow */
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more prominent border */
         }
         section:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
         }
         h2 {
             color: #FF7A00;
-            font-size: 2.2em;
+            font-size: 2.5em; /* Slightly larger heading */
             text-align: center;
             margin-bottom: 30px;
             position: relative;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for headings */
         }
         h2::after {
             content: '';
@@ -169,13 +141,13 @@
             left: 50%;
             transform: translateX(-50%);
             bottom: -10px;
-            width: 60px;
+            width: 80px; /* Wider underline */
             height: 3px;
             background: #FF0069;
             border-radius: 5px;
         }
         section p, section ul, section li {
-            color: #c9d1d9;
+            color: #e0e0e0; /* Lighter text for better contrast */
         }
         ul {
             list-style-type: none;
@@ -187,14 +159,15 @@
 
         /* Terminal Effect */
         .terminal {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.9); /* Almost solid black for terminal */
             padding: 25px;
             border-radius: 10px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
             color: #00FF87;
             font-family: 'Courier New', Courier, monospace;
             white-space: pre-wrap;
             position: relative;
+            border: 1px solid rgba(0, 255, 135, 0.3); /* Subtle green border */
         }
         .terminal::before {
             content: '> ';
@@ -203,7 +176,7 @@
 
         /* Project Section */
         #projects ul li {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08); /* Slightly more visible background */
             padding: 20px;
             border-radius: 10px;
             border-left: 3px solid #E1306C;
@@ -211,7 +184,7 @@
             transition: background 0.3s ease;
         }
         #projects ul li:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
         }
         #projects ul li strong {
             display: block;
@@ -234,9 +207,9 @@
         footer {
             text-align: center;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.5);
-            color: #888;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.7); /* More opaque */
+            color: #b0b0b0; /* Lighter footer text */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 50px;
         }
         footer p {
@@ -256,25 +229,17 @@
                 margin: 5px 0;
             }
             header h1 {
-                font-size: 2.5em;
+                font-size: 3em; /* Adjusted for smaller screens */
             }
             header p {
-                font-size: 1em;
+                font-size: 1.1em;
             }
             section {
                 padding: 40px 15px;
                 margin: 20px auto;
             }
             h2 {
-                font-size: 1.8em;
-            }
-            header img {
-                width: 150px;
-                height: 150px;
-            }
-            .profile-img-container::before {
-                width: 170px;
-                height: 170px;
+                font-size: 2em;
             }
         }
     </style>
@@ -293,9 +258,6 @@
     </nav>
 
     <header>
-        <div class="profile-img-container">
-            <img src="me2.jpg" alt="Vishal Patil">
-        </div>
         <h1>Vishal Patil</h1>
         <p>A passionate and driven software developer</p>
         <p id="contact">📍 Chikodi, Karnataka | 📞 +91 8296838241 | 📧 vishalrpatil.56@gmail.com</p>
