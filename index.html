@@ -7,29 +7,43 @@
     <style>
         /* General Reset */
         body {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1e1e2f;
-            color: #c9d1d9;
+            background: linear-gradient(135deg, #405DE6, #5B51D8, #833AB4, #E1306C, #FD1D1D, #F56040, #FCAF45);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            color: #ffffff;
+            line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         a {
-            color: #61dafb;
+            color: #ffffff;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         a:hover {
+            color: #f39c12;
             text-decoration: underline;
         }
 
         /* Navigation Bar */
         nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
-            background: #282c34;
-            padding: 10px 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             z-index: 1000;
         }
         nav ul {
@@ -38,84 +52,198 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
+            flex-wrap: wrap;
         }
         nav ul li {
-            margin: 0 15px;
+            margin: 10px 15px;
         }
         nav ul li a {
-            font-size: 1.2em;
-            transition: color 0.3s;
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
         }
-        nav ul li a:hover {
-            color: #f39c12;
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            background: #FF0069;
+            transition: width 0.3s ease;
         }
-
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
         /* Header */
         header {
             text-align: center;
-            padding: 100px 20px 50px;
-            background: linear-gradient(to bottom, #282c34, #1e1e2f);
+            padding: 150px 20px 80px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
         }
         header img {
-            width: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 3px solid #61dafb;
-            transition: transform 0.3s;
+            border: 4px solid #FCAF45;
+            box-shadow: 0 0 20px rgba(252, 176, 69, 0.5);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         header img:hover {
             transform: scale(1.1) rotate(5deg);
         }
         header h1 {
-            color: #61dafb;
-            font-size: 2.5em;
-            margin: 15px 0 10px;
+            color: #ffffff;
+            font-size: 3.5em;
+            margin: 20px 0 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         header p {
             font-size: 1.2em;
+            color: #c9d1d9;
         }
 
         /* Section */
         section {
-            padding: 50px 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            background: #282c34;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, background-color 0.3s;
+            padding: 60px 20px;
+            margin: 30px auto;
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         section:hover {
-            transform: scale(1.02);
-            background-color: #1f1f2e;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
         }
         h2 {
-            color: #f39c12;
-            font-size: 1.8em;
+            color: #FF7A00;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background: #FF0069;
+            border-radius: 5px;
+        }
+        section p, section ul, section li {
+            color: #c9d1d9;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 15px;
         }
 
         /* Terminal Effect */
         .terminal {
-            background: #1e1e2f;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #00FF87;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            position: relative;
+        }
+        .terminal::before {
+            content: '> ';
+            color: #40C9FF;
+        }
+
+        /* Project Section */
+        #projects ul li {
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            color: #61dafb;
-            font-family: 'Courier New', Courier, monospace;
+            border-left: 3px solid #E1306C;
+            margin-bottom: 25px;
+            transition: background 0.3s ease;
+        }
+        #projects ul li:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        #projects ul li strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+        #projects ul li ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        #projects ul li ul li {
+            margin-bottom: 5px;
+            border-left: none;
+            padding: 0;
+            background: transparent;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #282c34;
-            color: #c9d1d9;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #888;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            font-weight: bold;
         }
 
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            section {
+                padding: 40px 15px;
+                margin: 20px auto;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -130,8 +258,11 @@
     </nav>
 
     <header>
-        <img src="me2.jpg" alt="Vishal Patil">
+        <div class="profile-img-container">
+            <img src="me2.jpg" alt="Vishal Patil">
+        </div>
         <h1>Vishal Patil</h1>
+        <p>A passionate and driven software developer</p>
         <p id="contact">📍 Chikodi, Karnataka | 📞 +91 8296838241 | 📧 vishalrpatil.56@gmail.com</p>
     </header>
 
@@ -143,7 +274,7 @@
     </section>
 
     <section id="links">
-        <h2>Links</h2>
+        <h2>Connect with Me</h2>
         <ul>
             <li>🔗 <a href="https://www.linkedin.com/in/vishal-patil-a2454a342" target="_blank">LinkedIn</a></li>
             <li>🔗 <a href="https://github.com/vishalrpatil56" target="_blank">GitHub</a></li>
@@ -170,7 +301,7 @@
             <li>🌐 HTML, CSS, JavaScript</li>
             <li>🗄️ DBMS</li>
             <li>🔗 Computer Networking</li>
-            <li>🌐 Cloud, Salesforce </li>
+            <li>☁️ Cloud, Salesforce</li>
         </ul>
     </section>
 
@@ -178,18 +309,18 @@
         <h2>Key Projects</h2>
         <ul>
             <li>
-                <strong>Amazon Clone Website</strong> - 
+                <strong>Amazon Clone Website</strong>
                 <a href="https://vishalrpatil56.github.io/My-project/" target="_blank">View Project</a>
                 <ul>
                     <li>🔗 Designed and developed a shopping website clone of Amazon.com.</li>
                     <li>🎨 Utilized HTML, CSS, and JavaScript with a focus on responsive design and user-friendly interface.</li>
                 </ul>
             </li>
-             <li>
-                <strong>QR Code Generator</strong> - 
+            <li>
+                <strong>QR Code Generator</strong>
                 <a href="https://vishalrpatil56.github.io/QRGenerator/" target="_blank">View Project</a>
                 <ul>
-                    <li>🔗 Designed and developed a QR Code generator where we give a url then that url is converted into QR Code.</li>
+                    <li>🔗 Designed and developed a QR Code generator where a URL is converted into a QR code.</li>
                     <li>🎨 Utilized HTML, CSS, and JavaScript.</li>
                 </ul>
             </li>
@@ -202,9 +333,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
-
