@@ -1,395 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishal Patil Portfolio</title>
-    <style>
-        /* General Reset */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #405DE6, #5B51D8, #833AB4, #E1306C, #FD1D1D, #F56040, #FCAF45);
-            background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #f39c12;
-            text-decoration: underline;
-        }
-
-        /* Navigation Bar */
-        nav {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-        }
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            flex-wrap: wrap;
-        }
-        nav ul li {
-            margin: 10px 15px;
-        }
-        nav ul li a {
-            font-size: 1.1em;
-            font-weight: 500;
-            letter-spacing: 1px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            margin-top: 5px;
-            background: #FF0069;
-            transition: width 0.3s ease;
-        }
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        /* Header */
-        header {
-            text-align: center;
-            padding: 150px 20px 80px;
-            background: transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        .profile-img-container {
-            position: relative;
-            display: inline-block;
-        }
-        header img {
-            width: 200px; /* Slightly larger */
-            height: 200px; /* Slightly larger */
-            border-radius: 50%;
-            border: 5px solid #FCAF45; /* Slightly thicker border */
-            box-shadow: 0 0 30px rgba(252, 176, 69, 0.7), 0 0 60px rgba(252, 176, 69, 0.3); /* Enhanced glow effect */
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
-            filter: brightness(1.1) contrast(1.1) saturate(1.2); /* Cinematic color adjustments */
-            object-fit: cover; /* Ensures image fills the circle properly */
-            position: relative;
-            z-index: 1;
-        }
-        header img:hover {
-            transform: scale(1.08) rotate(2deg); /* Subtle hover transform */
-            box-shadow: 0 0 40px rgba(252, 176, 69, 0.9), 0 0 80px rgba(252, 176, 69, 0.5); /* More intense glow on hover */
-        }
-
-        /* Optional: Add a subtle background glow behind the image for extra cinematic pop */
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 220px; /* Slightly larger than image */
-            height: 220px; /* Slightly larger than image */
-            border-radius: 50%;
-            background: radial-gradient(circle, #FCAF45 0%, transparent 70%);
-            opacity: 0.5;
-            filter: blur(20px);
-            z-index: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .profile-img-container:hover::before {
-            opacity: 0.7;
-        }
-
-        h1 {
-            color: #ffffff;
-            font-size: 3.5em;
-            margin: 20px 0 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        header p {
-            font-size: 1.2em;
-            color: #c9d1d9;
-        }
-
-        /* Section */
-        section {
-            padding: 60px 20px;
-            margin: 30px auto;
-            max-width: 900px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-        }
-        h2 {
-            color: #FF7A00;
-            font-size: 2.2em;
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -10px;
-            width: 60px;
-            height: 3px;
-            background: #FF0069;
-            border-radius: 5px;
-        }
-        section p, section ul, section li {
-            color: #c9d1d9;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 15px;
-        }
-
-        /* Terminal Effect */
-        .terminal {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-            color: #00FF87;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            position: relative;
-        }
-        .terminal::before {
-            content: '> ';
-            color: #40C9FF;
-        }
-
-        /* Project Section */
-        #projects ul li {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 3px solid #E1306C;
-            margin-bottom: 25px;
-            transition: background 0.3s ease;
-        }
-        #projects ul li:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        #projects ul li strong {
-            display: block;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-            color: #ffffff;
-        }
-        #projects ul li ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-        #projects ul li ul li {
-            margin-bottom: 5px;
-            border-left: none;
-            padding: 0;
-            background: transparent;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.5);
-            color: #888;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 50px;
-        }
-        footer p {
-            margin: 5px 0;
-        }
-        footer a {
-            font-weight: bold;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 5px 0;
-            }
-            header h1 {
-                font-size: 2.5em;
-            }
-            header p {
-                font-size: 1em;
-            }
-            section {
-                padding: 40px 15px;
-                margin: 20px auto;
-            }
-            h2 {
-                font-size: 1.8em;
-            }
-            header img {
-                width: 150px;
-                height: 150px;
-            }
-            .profile-img-container::before {
-                width: 170px;
-                height: 170px;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishal Rajendra Patil — Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--bg2:#0f0f18;--bg3:#141420;--card:#12121c;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#00f5a0;--accent2:#00d4ff;--accent3:#ff6b35;--text:#e8e8f0;--muted:#6b6b80;--heading:#ffffff;--tag-bg:rgba(0,245,160,0.08);--tag-color:#00f5a0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
+#techCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55}
+.scanlines{position:fixed;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px)}
+.vignette{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,0.7) 100%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;background:rgba(10,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Space Mono',monospace;font-size:14px;color:var(--accent);letter-spacing:.05em}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.05em;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--accent)}
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 80px 80px;max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--accent)}
+.hero-name{font-size:clamp(52px,8vw,96px);font-weight:800;line-height:1;color:var(--heading);letter-spacing:-.03em;margin-bottom:8px}
+.hero-name span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-role{font-size:clamp(18px,3vw,28px);font-weight:500;color:var(--muted);margin-bottom:32px;letter-spacing:-.01em}
+.hero-desc{font-size:16px;color:var(--text);max-width:560px;line-height:1.8;margin-bottom:48px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:60px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--accent);color:#0a0a0f;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;border-radius:6px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,245,160,.3)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-size:14px;font-weight:600;border:1px solid var(--border2);border-radius:6px;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap}
+.meta-item{display:flex;flex-direction:column;gap:2px}
+.meta-label{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.meta-value{font-size:13px;color:var(--text)}
+.section{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:100px 80px;border-top:1px solid var(--border)}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:64px}
+.section-number{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.1em}
+.section-title{font-size:36px;font-weight:800;color:var(--heading);letter-spacing:-.02em}
+.section-line{flex:1;height:1px;background:var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about-text p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:16px}
+.about-highlight{color:var(--accent);font-weight:600}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s}
+.stat-card:hover{border-color:var(--accent)}
+.stat-number{font-size:32px;font-weight:800;color:var(--heading);line-height:1;margin-bottom:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.skill-group{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;transition:border-color .2s,transform .2s}
+.skill-group:hover{border-color:var(--border2);transform:translateY(-4px)}
+.skill-group-icon{font-size:24px;margin-bottom:12px}
+.skill-group-title{font-size:13px;font-weight:700;color:var(--heading);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:'Space Mono',monospace;font-size:11px;padding:4px 10px;background:var(--tag-bg);color:var(--tag-color);border-radius:4px;border:1px solid rgba(0,245,160,.15)}
+.tag.blue{background:rgba(0,212,255,.08);color:var(--accent2);border-color:rgba(0,212,255,.15)}
+.tag.orange{background:rgba(255,107,53,.08);color:var(--accent3);border-color:rgba(255,107,53,.15)}
+.edu-timeline{position:relative;padding-left:32px}
+.edu-timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border)}
+.edu-item{position:relative;margin-bottom:48px}
+.edu-item::before{content:'';position:absolute;left:-36px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(0,245,160,.15)}
+.edu-year{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.1em;margin-bottom:6px}
+.edu-degree{font-size:18px;font-weight:700;color:var(--heading);margin-bottom:4px}
+.edu-institute{font-size:14px;color:var(--muted);margin-bottom:6px}
+.edu-score{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent2)}
+.projects-grid{display:grid;gap:24px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .2s}
+.project-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.project-card:hover::before{opacity:1}
+.project-card.featured{border-color:rgba(0,245,160,.2);background:linear-gradient(135deg,rgba(0,245,160,.03),var(--card))}
+.project-card.featured::before{opacity:1}
+.project-badge{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 10px;border-radius:4px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em}
+.badge-new{background:rgba(0,245,160,.12);color:var(--accent);border:1px solid rgba(0,245,160,.2)}
+.badge-devops{background:rgba(255,107,53,.1);color:var(--accent3);border:1px solid rgba(255,107,53,.2)}
+.badge-web{background:rgba(0,212,255,.1);color:var(--accent2);border:1px solid rgba(0,212,255,.2)}
+.project-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px}
+.project-title{font-size:20px;font-weight:700;color:var(--heading);letter-spacing:-.01em}
+.project-links{display:flex;gap:12px;flex-shrink:0}
+.project-link{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:4px;transition:color .2s,border-color .2s;white-space:nowrap}
+.project-link:hover{color:var(--accent);border-color:var(--accent)}
+.project-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px}
+.project-stack{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.project-highlights{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.project-highlights li{font-size:13px;color:var(--text);padding-left:16px;position:relative;line-height:1.5}
+.project-highlights li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:'Space Mono',monospace;font-size:11px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-text{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:32px}
+.contact-links{display:flex;flex-direction:column;gap:12px}
+.contact-link{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color .2s,transform .15s}
+.contact-link:hover{border-color:var(--accent);transform:translateX(4px)}
+.contact-link-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.icon-green{background:rgba(0,245,160,.1)}
+.icon-blue{background:rgba(0,212,255,.1)}
+.icon-orange{background:rgba(255,107,53,.1)}
+.contact-link-text{display:flex;flex-direction:column;gap:2px}
+.contact-link-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Space Mono',monospace}
+.contact-link-value{font-size:14px;color:var(--text);font-weight:500}
+.objective-terminal{background:#0d0d1a;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.terminal-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-red{background:#ff5f57}.t-yellow{background:#febc2e}.t-green{background:#28c840}
+.terminal-title{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-left:8px}
+.terminal-body{padding:24px;font-family:'Space Mono',monospace;font-size:13px;line-height:1.8;color:#a0f0c0}
+.t-prompt{color:var(--accent2)}.t-cmd{color:var(--accent)}.t-comment{color:var(--muted)}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:40px 80px;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted)}
+.footer-right{font-size:13px;color:var(--muted)}
+.footer-right a{color:var(--accent);text-decoration:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;animation:fadeUp .6s ease forwards}
+.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}.delay-4{animation-delay:.4s}.delay-5{animation-delay:.6s}
+.glow-cursor{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,160,.04) 0%,transparent 70%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;transition:left .1s,top .1s}
+@media(max-width:900px){nav{padding:0 24px}.nav-links{gap:20px}.hero{padding:100px 24px 60px}.section{padding:80px 24px}.about-grid{grid-template-columns:1fr;gap:40px}.contact-grid{grid-template-columns:1fr;gap:40px}.project-highlights{grid-template-columns:1fr}.project-header{flex-direction:column}footer{padding:32px 24px;flex-direction:column;gap:16px;text-align:center}}
+@media(max-width:600px){.nav-links{display:none}.hero-name{font-size:40px}.hero-btns{flex-direction:column}.btn-primary,.btn-outline{justify-content:center}}
+</style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#career">Career Objective</a></li>
-            <li><a href="#links">Links</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Technical Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<canvas id="techCanvas"></canvas>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="glow-cursor" id="glowCursor"></div>
 
-    <header>
-        <div class="profile-img-container">
-            <img src="me2.jpg" alt="Vishal Patil">
+<nav>
+  <div class="nav-logo">vr.patil56</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow fade-up delay-1">Full Stack Developer &amp; Cloud Engineer</div>
+  <h1 class="hero-name fade-up delay-2">Vishal<br><span>Rajendra Patil</span></h1>
+  <p class="hero-role fade-up delay-3">MCA @ KLS GIT Belagavi &nbsp;·&nbsp; SGPA 8.43</p>
+  <p class="hero-desc fade-up delay-4">Building full-stack web applications and cloud-deployed systems. Passionate about clean architecture, DevOps automation, and real-world deployment on AWS EC2.</p>
+  <div class="hero-btns fade-up delay-5">
+    <a href="#projects" class="btn-primary">View Projects ↓</a>
+    <a href="Resume.pdf" target="_blank" class="btn-outline">Download Resume</a>
+  </div>
+  <div class="hero-meta fade-up delay-5">
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-value">Chikodi, Karnataka</span></div>
+    <div class="meta-item"><span class="meta-label">Phone</span><span class="meta-value">+91 82968 38241</span></div>
+    <div class="meta-item"><span class="meta-label">Email</span><span class="meta-value">vishalrpatil.56@gmail.com</span></div>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <span class="about-highlight">Full Stack Developer</span> pursuing my Master of Computer Applications at KLS Gogte Institute of Technology, Belagavi. I specialize in building end-to-end web applications using modern JavaScript ecosystems.</p>
+      <p>My strongest interest lies in <span class="about-highlight">cloud deployment and DevOps</span> — I've deployed production applications on AWS EC2 with CI/CD pipelines using Jenkins and Docker, and I understand how real software reaches real users.</p>
+      <p>I believe in learning by building. Every project I take up is a chance to solve a real problem, implement industry-standard practices, and push my technical skills further.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">Projects Shipped</div></div>
+      <div class="stat-card"><div class="stat-number">8.43</div><div class="stat-label">MCA SGPA</div></div>
+      <div class="stat-card"><div class="stat-number">AWS</div><div class="stat-label">EC2 Deployed</div></div>
+      <div class="stat-card"><div class="stat-number">8.01</div><div class="stat-label">B.Sc CGPA</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-icon">⚡</div>
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags"><span class="tag">JavaScript</span><span class="tag">Java</span><span class="tag">Python</span><span class="tag">C</span><span class="tag">C#</span><span class="tag">SQL</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">🌐</div>
+      <div class="skill-group-title">Frontend</div>
+      <div class="skill-tags"><span class="tag blue">React.js</span><span class="tag blue">HTML5</span><span class="tag blue">CSS3</span><span class="tag blue">Bootstrap</span><span class="tag blue">Responsive Design</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">🔧</div>
+      <div class="skill-group-title">Backend &amp; DB</div>
+      <div class="skill-tags"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">REST APIs</span><span class="tag">JWT Auth</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">☁️</div>
+      <div class="skill-group-title">Cloud &amp; DevOps</div>
+      <div class="skill-tags"><span class="tag orange">AWS EC2</span><span class="tag orange">Docker</span><span class="tag orange">Jenkins</span><span class="tag orange">CI/CD</span><span class="tag orange">GitHub</span><span class="tag orange">Salesforce</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">🧠</div>
+      <div class="skill-group-title">Core CS</div>
+      <div class="skill-tags"><span class="tag">DBMS</span><span class="tag">Big Data</span><span class="tag">Networking</span><span class="tag">OS Concepts</span><span class="tag">OOP</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">🛠️</div>
+      <div class="skill-group-title">Tools &amp; Integrations</div>
+      <div class="skill-tags"><span class="tag blue">Razorpay API</span><span class="tag blue">Nodemailer</span><span class="tag blue">Multer</span><span class="tag blue">VS Code</span><span class="tag blue">Git</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Education</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-year">2024 — 2026 · Pursuing</div>
+      <div class="edu-degree">Master of Computer Applications (MCA)</div>
+      <div class="edu-institute">KLS Gogte Institute of Technology, Belagavi — VTU Autonomous</div>
+      <div class="edu-score">2nd Sem SGPA: 8.43</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2021 — 2024 · Completed</div>
+      <div class="edu-degree">B.Sc in Computer Science</div>
+      <div class="edu-institute">KLE Society's Basavaprabhu Kore Arts, Science &amp; Commerce College, Chikodi</div>
+      <div class="edu-score">CGPA: 8.01</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2019 — 2021</div>
+      <div class="edu-degree">PUC — Science</div>
+      <div class="edu-institute">Basavajyothi PU College, Yaxamba</div>
+      <div class="edu-score">75%</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2019</div>
+      <div class="edu-degree">SSLC</div>
+      <div class="edu-institute">CTE Society's English Medium School, Chikodi</div>
+      <div class="edu-score">79.68%</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="project-badge badge-new">★ Latest Project · MCA Final Year</div>
+      <div class="project-header">
+        <div class="project-title">Home Appliances E-commerce &amp; Service Platform</div>
+        <div class="project-links">
+          <a href="https://github.com/vishalrpatil56" target="_blank" class="project-link">GitHub ↗</a>
         </div>
-        <h1>Vishal Rajendra Patil</h1>
-        <p>A passionate and driven software developer</p>
-        <p id="contact">📍 Chikodi, Karnataka | 📞 +91 8296838241 | 📧 vishalrpatil.56@gmail.com</p>
-    </header>
+      </div>
+      <p class="project-desc">A production-grade full-stack e-commerce platform for home appliances, deployed live on AWS EC2. Features role-based access for Customers, Admins, and Service Providers. Includes Razorpay payment gateway, JWT authentication, email order notifications, and Elastic IP for stable cloud hosting.</p>
+      <div class="project-stack">
+        <span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MySQL</span><span class="tag orange">AWS EC2</span><span class="tag orange">Elastic IP</span><span class="tag blue">Razorpay</span><span class="tag blue">JWT Auth</span><span class="tag blue">Nodemailer</span><span class="tag">Bootstrap</span>
+      </div>
+      <ul class="project-highlights">
+        <li>3-role system: Customer, Admin, Service Provider</li>
+        <li>Razorpay + Cash-on-Delivery payment integration</li>
+        <li>Order confirmation emails via Nodemailer</li>
+        <li>Admin dashboard — full product &amp; order CRUD</li>
+        <li>JWT-secured REST API with session management</li>
+        <li>Deployed on AWS EC2 with Elastic IP address</li>
+        <li>Product image uploads via Multer middleware</li>
+        <li>Complaint &amp; feedback management module</li>
+      </ul>
+    </div>
 
-    <section id="career">
-        <h2>Career Objective</h2>
-        <div class="terminal">
-            Aspiring to leverage my technical expertise in a forward-thinking organization within the technology industry, contributing to innovative solutions while advancing my professional growth.
+    <div class="project-card">
+      <div class="project-badge badge-devops">DevOps · CI/CD Pipeline</div>
+      <div class="project-header">
+        <div class="project-title">Automated Website Deployment — Jenkins + Docker + AWS</div>
+        <div class="project-links">
+          <a href="https://github.com/vishalrpatil56/Automation-of-website-Deployment-Using-Jenkins-CICD-Pipeline-AWS-Docker.git" target="_blank" class="project-link">GitHub ↗</a>
         </div>
-    </section>
+      </div>
+      <p class="project-desc">A complete DevOps pipeline automating web app deployment from code push to live production. GitHub webhook triggers Jenkins, which builds a Docker image and deploys to AWS EC2 — zero-downtime releases with email alerts at every pipeline stage.</p>
+      <div class="project-stack">
+        <span class="tag orange">Jenkins</span><span class="tag orange">Docker</span><span class="tag orange">AWS EC2</span><span class="tag orange">GitHub Webhooks</span><span class="tag">CI/CD</span><span class="tag">Shell Scripting</span>
+      </div>
+      <ul class="project-highlights">
+        <li>GitHub webhook → automatic Jenkins trigger</li>
+        <li>Docker containerized build &amp; deploy</li>
+        <li>Zero-downtime deployments to AWS EC2</li>
+        <li>Email alerts at every pipeline stage</li>
+      </ul>
+    </div>
 
-    <section id="links">
-        <h2>Connect with Me</h2>
-        <ul>
-            <li>🔗 <a href="https://www.linkedin.com/in/vishal-patil-a2454a342" target="_blank">LinkedIn</a></li>
-            <li>🔗 <a href="https://github.com/vishalrpatil56" target="_blank">GitHub</a></li>
-            <li>🔗 <a href="https://leetcode.com/vishal_56" target="_blank">LeetCode</a></li>
-        </ul>
-    </section>
+    <div class="project-card">
+      <div class="project-badge badge-web">Desktop App · C# + SQLite</div>
+      <div class="project-header">
+        <div class="project-title">BMI Calculator with Database</div>
+        <div class="project-links">
+          <a href="https://github.com/vishalrpatil56/BMICalculator.git" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="project-desc">A complete desktop application built with C# Windows Forms and SQLite. Calculates BMI, categorizes health status, and manages records with full CRUD operations. Clean UI with persistent local database for all patients.</p>
+      <div class="project-stack">
+        <span class="tag">C#</span><span class="tag">Windows Forms</span><span class="tag">SQLite</span><span class="tag">.NET Framework</span>
+      </div>
+      <ul class="project-highlights">
+        <li>BMI calculation &amp; health categorization</li>
+        <li>Full CRUD with SQLite local database</li>
+        <li>C# Windows Forms desktop UI</li>
+        <li>Patient record management system</li>
+      </ul>
+    </div>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>🎓 <strong>MCA</strong> - KLS Gogte Institute of Technology, Belagavi (2026, Pursuing (2nd sem SGPA:8.43))</li>
-            <li>🎓 <strong>B.Sc in Computer Science</strong> - KLE Society's Basavaprabhu Kore Arts, Science, and Commerce College, Chikodi (2024, 8.01 CGPA)</li>
-            <li>🎓 <strong>PUC (Science)</strong> - Basavajyothi PU College, Yaxamba (2021, 75%)</li>
-            <li>🎓 <strong>SSLC</strong> - CTE Society's English Medium School, Chikodi (2019, 79.68%)</li>
-        </ul>
-    </section>
+    <div class="project-card">
+      <div class="project-badge badge-web">Frontend · HTML / CSS / JS</div>
+      <div class="project-header">
+        <div class="project-title">Amazon Clone Website</div>
+        <div class="project-links">
+          <a href="https://vishalrpatil56.github.io/My-project/" target="_blank" class="project-link">Live Demo ↗</a>
+        </div>
+      </div>
+      <p class="project-desc">A fully responsive pixel-accurate clone of Amazon.com's storefront built with pure HTML, CSS, and JavaScript. Focuses on UI fidelity, responsive layout, and interactive components. Deployed on GitHub Pages.</p>
+      <div class="project-stack">
+        <span class="tag blue">HTML5</span><span class="tag blue">CSS3</span><span class="tag blue">JavaScript</span><span class="tag blue">Responsive Design</span>
+      </div>
+      <ul class="project-highlights">
+        <li>Pixel-accurate Amazon UI replication</li>
+        <li>Fully responsive across all devices</li>
+        <li>Interactive cart and navigation</li>
+        <li>Deployed on GitHub Pages</li>
+      </ul>
+    </div>
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <ul>
-            <li>💻 C</li>
-            <li>💻 C#</li>
-            <li>💻 Java</li>
-            <li>💻 Python</li>
-            <li>🌐 HTML, CSS, JavaScript</li>
-            <li>🗄️ DBMS</li>
-            <li>🗄️ BigData</li>
-            <li>🔗 Computer Networking</li>
-            <li>☁️ Cloud, Salesforce,Devops</li>
-        </ul>
-    </section>
+    <div class="project-card">
+      <div class="project-badge badge-web">Web Tool · JavaScript API</div>
+      <div class="project-header">
+        <div class="project-title">QR Code Generator</div>
+        <div class="project-links">
+          <a href="https://vishalrpatil56.github.io/QRGenerator/" target="_blank" class="project-link">Live Demo ↗</a>
+        </div>
+      </div>
+      <p class="project-desc">A web tool that converts any URL or text into a downloadable QR code in real time. Clean UI, instant generation, and mobile-friendly design deployed on GitHub Pages.</p>
+      <div class="project-stack">
+        <span class="tag blue">HTML5</span><span class="tag blue">CSS3</span><span class="tag blue">JavaScript</span><span class="tag blue">QR API</span>
+      </div>
+      <ul class="project-highlights">
+        <li>Real-time QR code generation</li>
+        <li>Any URL or text input supported</li>
+        <li>Downloadable QR image output</li>
+        <li>Mobile-friendly, GitHub Pages hosted</li>
+      </ul>
+    </div>
 
-    <section id="projects">
-        <h2>Key Projects</h2>
-        <ul>
-            <li>
-                <strong>Amazon Clone Website</strong>
-                <a href="https://vishalrpatil56.github.io/My-project/" target="_blank">View Project</a>
-                <ul>
-                    <li>🔗 Designed and developed a shopping website clone of Amazon.com.</li>
-                    <li>🎨 Utilized HTML, CSS, and JavaScript with a focus on responsive design and user-friendly interface.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>QR Code Generator</strong>
-                <a href="https://vishalrpatil56.github.io/QRGenerator/" target="_blank">View Project</a>
-                <ul>
-                    <li>🔗 Designed and developed a QR Code generator where a URL is converted into a QR code.</li>
-                    <li>🎨 Utilized HTML, CSS, and JavaScript.</li>
-                </ul>
-            </li>
-             <li>
-                <strong>BMI Calculatro with Database</strong>
-                <a href="https://github.com/vishalrpatil56/BMICalculator.git" target="_blank">View Project</a>
-                <ul>
-                    <li>🔗 A complete desktop application built with C# Windows Forms and SQLite database for calculating BMI, categorizing health status, and managing records with full CRUD operations (Create, Read, Update, Delete).</li>
-                    <li>🎨 Utilized C#,SQlite</li>
-                </ul>
-            </li>
-             <li>
-                <strong>Automation of website Deployment Using:Jenkins,CICD-Pipeline,AWS,Docker</strong>
-                <a href="https://github.com/vishalrpatil56/Automation-of-website-Deployment-Using-Jenkins-CICD-Pipeline-AWS-Docker.git" target="_blank">View Project</a>
-                <ul>
-                    <li>🔗 Complete DevOps pipeline automating web app deployment. GitHub webhook → Jenkins build/test → Docker image → AWS EC2 deploy. Zero-downtime releases with email alerts.</li>
-                    <li>🎨 Docker,Jenkins,AWS (EC2),Github</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Vishal Patil</p>
-        <p><a href="Resume.pdf" target="_blank">Download My Resume</a></p>
-    </footer>
+<section class="section" id="contact">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-text">I'm actively looking for full-time opportunities and internships in Full Stack Development, Cloud Engineering, and DevOps. If you have a role or a project that might be a good fit, I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:vishalrpatil.56@gmail.com" class="contact-link">
+          <div class="contact-link-icon icon-green">📧</div>
+          <div class="contact-link-text"><span class="contact-link-label">Email</span><span class="contact-link-value">vishalrpatil.56@gmail.com</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/vishal-patil-a2454a342" target="_blank" class="contact-link">
+          <div class="contact-link-icon icon-blue">💼</div>
+          <div class="contact-link-text"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">vishal-patil-a2454a342</span></div>
+        </a>
+        <a href="https://github.com/vishalrpatil56" target="_blank" class="contact-link">
+          <div class="contact-link-icon icon-green">⌨️</div>
+          <div class="contact-link-text"><span class="contact-link-label">GitHub</span><span class="contact-link-value">vishalrpatil56</span></div>
+        </a>
+        <a href="https://leetcode.com/vishal_56" target="_blank" class="contact-link">
+          <div class="contact-link-icon icon-orange">🧩</div>
+          <div class="contact-link-text"><span class="contact-link-label">LeetCode</span><span class="contact-link-value">vishal_56</span></div>
+        </a>
+        <a href="tel:+918296838241" class="contact-link">
+          <div class="contact-link-icon icon-blue">📱</div>
+          <div class="contact-link-text"><span class="contact-link-label">Phone</span><span class="contact-link-value">+91 82968 38241</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="objective-terminal">
+      <div class="terminal-bar">
+        <div class="t-dot t-red"></div><div class="t-dot t-yellow"></div><div class="t-dot t-green"></div>
+        <span class="terminal-title">career_objective.sh</span>
+      </div>
+      <div class="terminal-body">
+<span class="t-comment"># vishal@portfolio:~$</span><br>
+<span class="t-prompt">$</span> <span class="t-cmd">cat objective.txt</span><br><br>
+Aspiring to leverage technical expertise<br>
+in Full Stack Development and Cloud<br>
+Engineering within a forward-thinking<br>
+organization — contributing to innovative<br>
+solutions while advancing professionally.<br><br>
+<span class="t-prompt">$</span> <span class="t-cmd">cat stack.json</span><br><br>
+{<br>
+&nbsp;&nbsp;"frontend": "React.js",<br>
+&nbsp;&nbsp;"backend": "Node.js + Express",<br>
+&nbsp;&nbsp;"database": "MySQL",<br>
+&nbsp;&nbsp;"cloud": "AWS EC2",<br>
+&nbsp;&nbsp;"devops": "Docker + Jenkins"<br>
+}<br><br>
+<span class="t-prompt">$</span> <span class="t-cmd">echo "Open to opportunities ✓"</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2025 Vishal Rajendra Patil</div>
+  <div class="footer-right"><a href="Resume.pdf" target="_blank">Download Resume</a> &nbsp;·&nbsp; Built with HTML + CSS + JS</div>
+</footer>
+
+<script>
+/* ── cursor glow ── */
+const cursorEl=document.getElementById('glowCursor');
+let mx=window.innerWidth/2, my=window.innerHeight/2;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cursorEl.style.left=mx+'px';
+  cursorEl.style.top=my+'px';
+});
+
+/* ── scroll reveal ── */
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:0.08});
+document.querySelectorAll('.project-card,.skill-group,.edu-item,.stat-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';
+  el.style.transition='opacity 0.6s ease,transform 0.6s ease';
+  revealObs.observe(el);
+});
+
+/* ══════════════════════════════════════════
+   TECH BACKGROUND ENGINE
+══════════════════════════════════════════ */
+(function(){
+  const C=document.getElementById('techCanvas');
+  const ctx=C.getContext('2d');
+  let W,H,frame=0;
+
+  /* ── palette ── */
+  const G='0,245,160', B='0,212,255', O='255,107,53';
+  const COLS=[[...G.split(',').map(Number)],[...B.split(',').map(Number)],[...O.split(',').map(Number)]];
+
+  /* ── matrix rain ── */
+  const FS=14;
+  const CHARS='01アイウエオカキクケコサシスセソタチツアBCDEF<>{}[]/\\|=+-#@$%'.split('');
+  let rain=[];
+
+  /* ── hex grid ── */
+  const HR=36; // hex radius
+  let hexes=[];
+
+  /* ── circuit nodes ── */
+  let nodes=[], pulses=[];
+
+  /* ── aurora blobs ── */
+  let blobs=[];
+
+  /* ── data stream particles ── */
+  let streamParts=[];
+
+  /* ── shooting stars ── */
+  let stars=[];
+
+  function rgba(r,g,b,a){return `rgba(${r},${g},${b},${a})`;}
+  function rcol(){return COLS[Math.floor(Math.random()*COLS.length)];}
+
+  function resize(){
+    W=C.width=window.innerWidth;
+    H=C.height=window.innerHeight;
+    initRain(); initHex(); initNodes(); initBlobs(); initStream(); initStars();
+  }
+
+  /* ── RAIN ── */
+  function initRain(){
+    const cols=Math.floor(W/FS)+1;
+    rain=Array.from({length:cols},(_,i)=>({
+      x:i*FS, y:-(Math.random()*H*1.5),
+      speed:0.4+Math.random()*0.8,
+      len:Math.floor(10+Math.random()*30),
+      chars:Array.from({length:40},()=>CHARS[Math.floor(Math.random()*CHARS.length)]),
+      shuffleTimer:0
+    }));
+  }
+  function drawRain(){
+    ctx.font=`${FS}px "Space Mono",monospace`;
+    for(const col of rain){
+      col.shuffleTimer++;
+      if(col.shuffleTimer>6){
+        col.chars[Math.floor(Math.random()*col.chars.length)]=CHARS[Math.floor(Math.random()*CHARS.length)];
+        col.shuffleTimer=0;
+      }
+      for(let j=0;j<col.len;j++){
+        const cy=col.y-j*FS;
+        if(cy<-FS||cy>H+FS) continue;
+        const t=1-j/col.len;
+        let alpha,r,g,b;
+        if(j===0){r=220;g=255;b=240;alpha=0.95;}
+        else{[r,g,b]=[0,245,160];alpha=t*t*0.55;}
+        ctx.fillStyle=rgba(r,g,b,alpha);
+        ctx.fillText(col.chars[j%col.chars.length],col.x,cy);
+      }
+      col.y+=col.speed;
+      if(col.y-col.len*FS>H) col.y=-(Math.random()*H*0.5+100);
+    }
+  }
+
+  /* ── HEX GRID ── */
+  function initHex(){
+    hexes=[];
+    const hw=HR*Math.sqrt(3), hh=HR*1.5;
+    const cols=Math.ceil(W/hw)+2, rows=Math.ceil(H/hh)+2;
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<cols;c++){
+        const ox=(r%2)*hw/2;
+        hexes.push({
+          x:c*hw+ox-hw, y:r*hh-hh,
+          glow:Math.random(),
+          glowSpeed:0.003+Math.random()*0.008,
+          col:rcol(),
+          active:Math.random()<0.18
+        });
+      }
+    }
+  }
+  function hexPath(cx,cy,r){
+    ctx.beginPath();
+    for(let a=0;a<6;a++){
+      const ang=(a*60-30)*Math.PI/180;
+      a===0?ctx.moveTo(cx+r*Math.cos(ang),cy+r*Math.sin(ang))
+           :ctx.lineTo(cx+r*Math.cos(ang),cy+r*Math.sin(ang));
+    }
+    ctx.closePath();
+  }
+  function drawHex(){
+    for(const h of hexes){
+      h.glow+=h.glowSpeed;
+      const g=Math.abs(Math.sin(h.glow));
+      if(h.active){
+        /* filled pulse */
+        hexPath(h.x,h.y,HR-1);
+        ctx.fillStyle=rgba(...h.col,0.04+g*0.06);
+        ctx.fill();
+        ctx.strokeStyle=rgba(...h.col,0.1+g*0.18);
+        ctx.lineWidth=0.8;
+        ctx.stroke();
+        /* inner bright ring */
+        if(g>0.7){
+          hexPath(h.x,h.y,HR*0.35);
+          ctx.strokeStyle=rgba(...h.col,g*0.4);
+          ctx.lineWidth=1;
+          ctx.stroke();
+        }
+      } else {
+        hexPath(h.x,h.y,HR-1);
+        ctx.strokeStyle=rgba(255,255,255,0.022+g*0.012);
+        ctx.lineWidth=0.4;
+        ctx.stroke();
+      }
+    }
+  }
+
+  /* ── CIRCUIT NODES ── */
+  function initNodes(){
+    nodes=Array.from({length:55},()=>{
+      const [r,g,b]=rcol();
+      return {
+        x:Math.random()*W, y:Math.random()*H,
+        vx:(Math.random()-.5)*0.4, vy:(Math.random()-.5)*0.4,
+        r:1+Math.random()*2.5,
+        col:[r,g,b],
+        pulse:Math.random()*Math.PI*2,
+        pulseSpeed:0.02+Math.random()*0.03
+      };
+    });
+    pulses=[];
+  }
+  function spawnPulse(){
+    if(pulses.length>30) return;
+    const a=nodes[Math.floor(Math.random()*nodes.length)];
+    const b=nodes[Math.floor(Math.random()*nodes.length)];
+    if(a===b) return;
+    const dx=b.x-a.x, dy=b.y-a.y;
+    if(Math.sqrt(dx*dx+dy*dy)>200) return;
+    pulses.push({ax:a.x,ay:a.y,bx:b.x,by:b.y,t:0,speed:0.012+Math.random()*0.018,col:a.col});
+  }
+  function drawNodes(){
+    /* connections */
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i],b=nodes[j];
+        const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<180){
+          const alpha=(1-d/180)*0.18;
+          const mx=a.x+(b.x-a.x)*0.5;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(mx,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle=rgba(...a.col,alpha);
+          ctx.lineWidth=0.6;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(mx,a.y,1.5,0,Math.PI*2);
+          ctx.fillStyle=rgba(...a.col,alpha*3);
+          ctx.fill();
+        }
+      }
+    }
+    /* pulses along edges */
+    for(let p of pulses){
+      p.t+=p.speed;
+      const px=p.ax+(p.bx-p.ax)*p.t;
+      const py=p.ay+(p.by-p.ay)*p.t;
+      ctx.beginPath();
+      ctx.arc(px,py,3,0,Math.PI*2);
+      ctx.fillStyle=rgba(...p.col,0.9);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(px,py,7,0,Math.PI*2);
+      ctx.fillStyle=rgba(...p.col,0.2);
+      ctx.fill();
+    }
+    pulses=pulses.filter(p=>p.t<1);
+    /* node dots */
+    for(const n of nodes){
+      n.x+=n.vx; n.y+=n.vy; n.pulse+=n.pulseSpeed;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+      const pr=n.r+Math.sin(n.pulse)*1.5;
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,pr,0,Math.PI*2);
+      ctx.fillStyle=rgba(...n.col,0.8);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,pr+5,0,Math.PI*2);
+      ctx.fillStyle=rgba(...n.col,0.07);
+      ctx.fill();
+    }
+  }
+
+  /* ── AURORA BLOBS ── */
+  function initBlobs(){
+    blobs=[
+      {x:W*0.15,y:H*0.2,rx:W*0.35,ry:H*0.28,col:[0,245,160],t:0,speed:0.0006},
+      {x:W*0.8, y:H*0.7,rx:W*0.3, ry:H*0.25,col:[0,212,255],t:2,speed:0.0008},
+      {x:W*0.5, y:H*0.5,rx:W*0.25,ry:H*0.2, col:[100,80,255],t:4,speed:0.0005},
+      {x:W*0.9, y:H*0.15,rx:W*0.2,ry:H*0.18,col:[255,107,53],t:1,speed:0.0007}
+    ];
+  }
+  function drawBlobs(){
+    for(const b of blobs){
+      b.t+=b.speed;
+      const ox=Math.sin(b.t)*W*0.06, oy=Math.cos(b.t*1.3)*H*0.05;
+      const grd=ctx.createRadialGradient(b.x+ox,b.y+oy,0,b.x+ox,b.y+oy,Math.max(b.rx,b.ry));
+      grd.addColorStop(0,rgba(...b.col,0.07));
+      grd.addColorStop(1,rgba(...b.col,0));
+      ctx.save();
+      ctx.scale(1,b.ry/b.rx);
+      ctx.beginPath();
+      ctx.arc(b.x+ox,(b.y+oy)*(b.rx/b.ry),b.rx,0,Math.PI*2);
+      ctx.fillStyle=grd;
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  /* ── DATA STREAM PARTICLES ── */
+  function initStream(){
+    streamParts=Array.from({length:60},()=>mkStream());
+  }
+  function mkStream(){
+    const [r,g,b]=rcol();
+    return {x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2,
+      life:Math.random(),decay:0.002+Math.random()*0.004,r,g,b,size:Math.random()*1.5+0.3};
+  }
+  function drawStream(){
+    for(let i=0;i<streamParts.length;i++){
+      const p=streamParts[i];
+      p.x+=p.vx; p.y+=p.vy; p.life-=p.decay;
+      if(p.life<=0||p.x<0||p.x>W||p.y<0||p.y>H) streamParts[i]=mkStream();
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fillStyle=rgba(p.r,p.g,p.b,p.life*0.7);
+      ctx.fill();
+    }
+  }
+
+  /* ── SHOOTING STARS ── */
+  function initStars(){stars=[];}
+  function spawnStar(){
+    if(stars.length>6) return;
+    const ang=-Math.PI/6+Math.random()*Math.PI/3;
+    const spd=6+Math.random()*10;
+    stars.push({
+      x:Math.random()*W*0.8,y:Math.random()*H*0.4,
+      vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd+2,
+      len:80+Math.random()*120,life:1,col:rcol()
+    });
+  }
+  function drawStars(){
+    for(const s of stars){
+      s.x+=s.vx; s.y+=s.vy; s.life-=0.015;
+      if(s.life<=0) continue;
+      const tx=s.x-s.vx*(s.len/8), ty=s.y-s.vy*(s.len/8);
+      const grd=ctx.createLinearGradient(s.x,s.y,tx,ty);
+      grd.addColorStop(0,rgba(...s.col,s.life*0.9));
+      grd.addColorStop(1,rgba(...s.col,0));
+      ctx.beginPath();
+      ctx.moveTo(s.x,s.y);
+      ctx.lineTo(tx,ty);
+      ctx.strokeStyle=grd;
+      ctx.lineWidth=1.5;
+      ctx.stroke();
+    }
+    stars=stars.filter(s=>s.life>0&&s.x<W+200&&s.y<H+200);
+  }
+
+  /* ── MOUSE SPOTLIGHT ── */
+  function drawSpotlight(){
+    const grd=ctx.createRadialGradient(mx,my,0,mx,my,320);
+    grd.addColorStop(0,rgba(0,245,160,0.05));
+    grd.addColorStop(0.4,rgba(0,212,255,0.02));
+    grd.addColorStop(1,rgba(0,0,0,0));
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,W,H);
+  }
+
+  /* ── SCANLINE FLICKER ── */
+  function drawScanFlicker(){
+    if(frame%120<3){
+      ctx.fillStyle=rgba(0,245,160,0.015);
+      ctx.fillRect(0,0,W,H);
+    }
+  }
+
+  /* ── MAIN LOOP ── */
+  function draw(){
+    frame++;
+    /* clear with deep trail */
+    ctx.fillStyle='rgba(10,10,15,0.22)';
+    ctx.fillRect(0,0,W,H);
+
+    drawBlobs();
+    drawHex();
+    drawRain();
+    drawNodes();
+    drawStream();
+    drawStars();
+    drawSpotlight();
+    drawScanFlicker();
+
+    if(frame%55===0) spawnPulse();
+    if(frame%240===0) spawnStar();
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(resize,200);});
+  resize();
+  draw();
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
